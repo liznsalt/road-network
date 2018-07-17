@@ -54,11 +54,11 @@ def creat_road_network(line_count):
                         res[NO].add(no)
             
             count += 1
-            if count > line_count:
+            if count >= line_count:
                 break
 
     # 映射g:id->th
-    g = {id: th+1  for th, id in enumerate(sorted(points))}
+    g = {id: th  for th, id in enumerate(sorted(points))}
 
     # 在可能成为路口的点中，只有可以通往两各点以上的才成为路口
     for road in maybe_cross_roads:
@@ -81,5 +81,5 @@ def creat_road_network(line_count):
 
 if __name__ == '__main__':
     # 只读20边
-    creat_road_network(20)
+    creat_road_network(1000)
             

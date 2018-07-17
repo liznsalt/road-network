@@ -1,8 +1,9 @@
 import json
 
-def creat_point_data():
+def creat_point_data(line_count):
     res = {}
     with open('Task1/edges.txt', 'r') as f:
+        count = 0
         for line in f:
             _, *datas = line.split('|')
             for data in datas:
@@ -13,13 +14,19 @@ def creat_point_data():
                 j = float(j)
                 w = float(w)
                 res[node] = (j, w)
-    return res
+        
+            count += 1
+            if count >= line_count:
+                break
 
-def write_to_file(res):
-    with open('Task1/point_data.txt', 'w') as f:
-        f.write(json.dumps(res, ensure_ascii=False, \
-                            indent=4, separators=(',', ': ')))
+    g = {i: res[key] for i, key in enumerate(sorted(res))}
+    return g
+
+def write_to_file(content):
+    with open('Task1/point_data.json', 'w') as f:
+        json.dump(content, f, ensure_ascii=False, \
+                            indent=4, separators=(',', ': '))
 
 if __name__ == '__main__':
-    write_to_file(creat_point_data())
+    write_to_file(creat_point_data(1000))
     print('Done')
