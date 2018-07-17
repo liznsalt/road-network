@@ -4,9 +4,9 @@ import networkx as nx
 
 def creat_graph():
     G = nx.Graph()
-    with open('Task1/result.txt') as f:
+    with open('Task1/road_network.txt') as f:
         for line in f:
-            data = line.split()
+            data = line.split() 
             if data[0] == 'e':
                 _, e1, e2 = data
                 G.add_edge(e1, e2)

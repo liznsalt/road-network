@@ -41,7 +41,7 @@ def creat_flow_network(d):
                     res[road_id].setdefault(time_interval, 0)
                     res[road_id][time_interval] += 1
     
-    with open('Task2/result.txt', 'w', encoding='utf-8') as f:
+    with open('Task2/flow_network.txt', 'w', encoding='utf-8') as f:
         for road_id, road_data in res.items():
             for t, car_count in road_data.items():
                 f.write('${}_{},{}$'.format(car_count, '{'+road_id, str(t)+'}') + '\n')
