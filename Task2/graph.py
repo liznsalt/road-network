@@ -36,7 +36,7 @@ def draw(G):
             # font_weight='bold',
             alpha=0.5,
             node_size=10)
-    
+
     # plt.xlim(115, 117)
     # plt.ylim(38, 41)
     plt.show()
