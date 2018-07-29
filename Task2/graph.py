@@ -36,8 +36,8 @@ def draw(G):
             node_size=0.0001
             )
     # plt.figure(figsize=(10, 10)) 
-    plt.show()
-    # plt.savefig('graph.png')
+    # plt.show()
+    plt.savefig('graph.png', dpi=300)
 
 if __name__ == '__main__':
     draw(creat_graph())
