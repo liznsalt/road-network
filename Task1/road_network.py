@@ -1,5 +1,3 @@
-import re
-
 def creat_road_network(line_count):
     # 统计边
     road_count = 0
@@ -12,7 +10,7 @@ def creat_road_network(line_count):
     # 记录各点可连接的点集
     res = {}
     
-    with open('edges.txt') as f:
+    with open('Task1/edges.txt') as f:
         count = 0
         for line in f:
             # 各点信息
@@ -55,14 +53,14 @@ def creat_road_network(line_count):
                 break
 
     # 映射g:id->th
-    g = {id: th for th, id in enumerate(sorted(points))}
+    g = {id: th+1 for th, id in enumerate(sorted(points))}
 
     # 在可能成为路口的点中，只有可以通往两各点以上的才成为路口
     for road in maybe_cross_roads:
         if len(res[road]) > 1:
             cross_roads.add(road)
 
-    with open('road_network.txt', 'w', encoding='utf-8') as f:
+    with open('Task1/road_network.txt', 'w', encoding='utf-8') as f:
         f.write('c BeiJing graph' + '\n')
         f.write('p edge {} {}'.format(len(points), road_count) + '\n')
             
