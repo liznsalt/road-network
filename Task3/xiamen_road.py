@@ -24,16 +24,16 @@ class OSMHandler(osm.SimpleHandler):
 
         nodes = w.nodes
         for i, n in enumerate(nodes):
-            if n not in self.rel:
-                self.rel[n] = set()
+            if n.ref not in self.rel:
+                self.rel[n.ref] = set()
 
             if i == 0:
-                self.rel[n].add(nodes[1].ref)
+                self.rel[n.ref].add(nodes[1].ref)
             elif i == len(nodes) - 1:
-                self.rel[n].add(nodes[-2].ref)
+                self.rel[n.ref].add(nodes[-2].ref)
             else:
-                self.rel[n].add(nodes[i+1].ref)
-                self.rel[n].add(nodes[i-1].ref)
+                self.rel[n.ref].add(nodes[i+1].ref)
+                self.rel[n.ref].add(nodes[i-1].ref)
 
         # 将起点、终点加入路口
         # self.crossings.add(start)
