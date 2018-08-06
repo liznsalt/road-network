@@ -16,16 +16,13 @@ def creat_graph():
             data = line.split()
             if data[0] == 'e':
                 _, e1, e2 = data
-                e1 = int(e1)
-                e2 = int(e2)
                 G.add_edge(e1, e2)
     return G
 
 
 def draw(G):
     # 得到点的信息
-    point_data = get_point_data()
-    pos = [point_data[str(node)] for node in point_data.keys()]
+    pos = get_point_data()
     nx.draw(G,
             pos=pos,
             # node_color='green',
@@ -38,8 +35,8 @@ def draw(G):
             # alpha=0.5,
             node_size=0.0001
             )
-    plt.show()
-    # plt.savefig('Task2/graph.png', dpi=300)
+    # plt.show()
+    plt.savefig('Task2/graph.png', dpi=300)
 
 
 if __name__ == '__main__':

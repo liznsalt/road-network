@@ -1,6 +1,5 @@
 import json
 import osmium as osm
-import pandas as pd
 
 
 class OSMHandler(osm.SimpleHandler):
@@ -29,10 +28,10 @@ class OSMHandler(osm.SimpleHandler):
             if i == 0:
                 self.rel[n.ref].add(nodes[1].ref)
             elif i == len(nodes) - 1:
-                self.rel[n.ref].add(nodes[-2].ref)
+                pass
             else:
                 self.rel[n.ref].add(nodes[i+1].ref)
-                self.rel[n.ref].add(nodes[i-1].ref)
+                # self.rel[n.ref].add(nodes[i-1].ref)
 
     # 暂时不处理relation
     def relation(self, r):
