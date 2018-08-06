@@ -20,7 +20,7 @@ def creat_point_data(line_count):
             if count >= line_count:
                 break
 
-    g = {i: res[key] for i, key in enumerate(sorted(res))}
+    g = {i+1: res[key] for i, key in enumerate(sorted(res))}
     return g
 
 def write_to_file(content):
