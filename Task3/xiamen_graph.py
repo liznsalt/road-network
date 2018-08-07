@@ -35,10 +35,10 @@ def draw(G):
             # alpha=0.5,
             # node_size=0.01
             )
-    plt.xlim(118.03, 118.2)#设置首界面X轴坐标范围
-    plt.ylim(24.2, 24.6)#设置首界面Y轴坐标范围
-    plt.show()
-    # plt.savefig('Task3/graph.png', dpi=300)
+    plt.xlim(118.066, 118.197)#设置首界面X轴坐标范围
+    plt.ylim(24.424, 24.561)#设置首界面Y轴坐标范围
+    # plt.show()
+    plt.savefig('Task3/xiamen_graph.png', dpi=300)
 
 
 if __name__ == '__main__':
