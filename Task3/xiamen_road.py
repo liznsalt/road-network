@@ -3,7 +3,7 @@ import osmium as osm
 
 
 class OSMHandler(osm.SimpleHandler):
-    
+
     def __init__(self):
         super(OSMHandler, self).__init__()
         # 每个点邻接点的映射
@@ -22,16 +22,13 @@ class OSMHandler(osm.SimpleHandler):
     def way(self, w):
         nodes = w.nodes
         for i, n in enumerate(nodes):
-            if n.ref not in self.rel:
-                self.rel[n.ref] = set()
-
-            if i == 0:
-                self.rel[n.ref].add(nodes[1].ref)
-            elif i == len(nodes) - 1:
-                pass
-            else:
-                self.rel[n.ref].add(nodes[i+1].ref)
-                # self.rel[n.ref].add(nodes[i-1].ref)
+            if i != len(nodes) - 1:
+                a, b = n.ref, nodes[i+1].ref
+                if int(a) > int(b):
+                    a, b = b, a
+                if a not in self.rel:
+                    self.rel[a] = set()
+                self.rel[a].add(b)
 
     # 暂时不处理relation
     def relation(self, r):
@@ -48,26 +45,28 @@ class OSMHandler(osm.SimpleHandler):
 def write_to_file(osmhandler):
     # 存储点的坐标
     with open('Task3/nodes.json', 'w') as f:
-        nodes = {i+1: osmhandler.nodes[key] 
-                        for i, key in enumerate(sorted(osmhandler.nodes))}
-        json.dump(nodes, f, ensure_ascii=False, \
-                            indent=4, separators=(',', ': '))
+        nodes = {i+1: osmhandler.nodes[key]
+                 for i, key in enumerate(sorted(osmhandler.nodes))}
+        json.dump(nodes, f, ensure_ascii=False,
+                  indent=4, separators=(',', ': '))
 
     # 保存为DIMACS格式
     with open('Task3/xiamen_road.txt', 'w', encoding='utf-8') as f:
         f.write('c xiamen graph' + '\n')
         f.write('p edge {} {}'.format(len(osmhandler.nodes), osmhandler.ways)
-                 + '\n')
+                + '\n')
         for node_id, ns in osmhandler.rel.items():
             for n in ns:
                 f.write('e {} {}'.format(osmhandler.g[node_id], osmhandler.g[n])
-                         + '\n')
+                        + '\n')
+
 
 def main():
     osmhandler = OSMHandler()
-    osmhandler.apply_file('Task3/map.osm')
+    osmhandler.apply_file('Task3/xiamen_highway.osm')
     osmhandler.update()
     write_to_file(osmhandler)
+
 
 if __name__ == '__main__':
     main()

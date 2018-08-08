@@ -37,8 +37,8 @@ def draw(G):
             )
     plt.xlim(118.066, 118.197)#设置首界面X轴坐标范围
     plt.ylim(24.424, 24.561)#设置首界面Y轴坐标范围
-    # plt.show()
-    plt.savefig('Task3/xiamen_graph.png', dpi=300)
+    plt.show()
+    # plt.savefig('Task3/xiamen_graph.png', dpi=300)
 
 
 if __name__ == '__main__':
