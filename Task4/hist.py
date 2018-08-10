@@ -5,7 +5,7 @@ import pandas as pd
 
 def main():
     distance_data = []
-    with open('Task3/distance.txt', 'r') as f:
+    with open('../Task3/distance.txt', 'r') as f:
         for line in f:
             distance_data.append(float(line))
 

@@ -10,7 +10,7 @@ def creat_road_network(line_count):
     # 记录各点可连接的点集
     res = {}
     
-    with open('Task1/edges.txt') as f:
+    with open('edges.txt') as f:
         count = 0
         for line in f:
             # 各点信息
@@ -60,7 +60,7 @@ def creat_road_network(line_count):
         if len(res[road]) > 1:
             cross_roads.add(road)
 
-    with open('Task1/road_network.txt', 'w', encoding='utf-8') as f:
+    with open('road_network.txt', 'w', encoding='utf-8') as f:
         f.write('c BeiJing graph' + '\n')
         f.write('p edge {} {}'.format(len(points), road_count) + '\n')
             

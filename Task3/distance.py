@@ -32,7 +32,7 @@ def make_averager():
 
 def main():
     # 提取经纬度信息
-    with open('Task3/nodes.json', 'r') as f:
+    with open('nodes.json', 'r') as f:
         data = json.load(f)
     
     # 储存两点的id和之间距离
@@ -42,7 +42,7 @@ def main():
     avg = make_averager()
 
     # 读取厦门路段并储存各路段距离
-    with open('Task3/xiamen_road.txt', 'r') as f:
+    with open('xiamen_road.txt', 'r') as f:
         for line in f:
             if line[0] == 'e':
                 _, e1, e2 = line.split()
@@ -61,7 +61,7 @@ def main():
                 res.append((e1, e2, dis))
 
     # 写入文件
-    with open('Task3/distance.txt', 'w', encoding='utf-8') as f:
+    with open('distance.txt', 'w', encoding='utf-8') as f:
         print('平均值：{}'.format(avg() * 1000))
         print('最大值：{}'.format(max_dis * 1000))
         print('最小值：{}'.format(min_dis * 1000))

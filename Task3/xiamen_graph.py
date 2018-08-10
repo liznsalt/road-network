@@ -4,14 +4,14 @@ import networkx as nx
 
 
 def get_point_data():
-    with open('Task3/nodes.json', 'r') as f:
+    with open('nodes.json', 'r') as f:
         res = json.load(f)
     return res
 
 
 def creat_graph():
     G = nx.Graph()
-    with open('Task3/xiamen_road.txt', 'r') as f:
+    with open('xiamen_road.txt', 'r') as f:
         for line in f:
             data = line.split()
             if data[0] == 'e':

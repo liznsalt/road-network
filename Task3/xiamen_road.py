@@ -44,14 +44,14 @@ class OSMHandler(osm.SimpleHandler):
 
 def write_to_file(osmhandler):
     # 存储点的坐标
-    with open('Task3/nodes.json', 'w') as f:
+    with open('nodes.json', 'w') as f:
         nodes = {i+1: osmhandler.nodes[key]
                  for i, key in enumerate(sorted(osmhandler.nodes))}
         json.dump(nodes, f, ensure_ascii=False,
                   indent=4, separators=(',', ': '))
 
     # 保存为DIMACS格式
-    with open('Task3/xiamen_road.txt', 'w', encoding='utf-8') as f:
+    with open('xiamen_road.txt', 'w', encoding='utf-8') as f:
         f.write('c xiamen graph' + '\n')
         f.write('p edge {} {}'.format(len(osmhandler.nodes), osmhandler.ways)
                 + '\n')
@@ -63,7 +63,7 @@ def write_to_file(osmhandler):
 
 def main():
     osmhandler = OSMHandler()
-    osmhandler.apply_file('Task3/xiamen_highway.osm')
+    osmhandler.apply_file('xiamen_highway.osm')
     osmhandler.update()
     write_to_file(osmhandler)
 

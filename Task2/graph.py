@@ -4,14 +4,14 @@ import networkx as nx
 
 
 def get_point_data():
-    with open('Task1/point_data.json', 'r') as f:
+    with open('../Task1/point_data.json', 'r') as f:
         res = json.load(f)
     return res
 
 
 def creat_graph():
     G = nx.Graph()
-    with open('Task1/road_network.txt', 'r') as f:
+    with open('../Task1/road_network.txt', 'r') as f:
         for line in f:
             data = line.split()
             if data[0] == 'e':
@@ -36,7 +36,7 @@ def draw(G):
             node_size=0.0001
             )
     # plt.show()
-    plt.savefig('Task2/graph.png', dpi=300)
+    plt.savefig('graph.png', dpi=300)
 
 
 if __name__ == '__main__':
