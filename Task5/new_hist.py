@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 def main():
     distance_data = []
-    with open('../Task3/distance.txt', 'r') as f:
+    with open('distance.txt', 'r') as f:
         for line in f:
             distance_data.append(float(line))
 
@@ -12,7 +12,7 @@ def main():
     plt.ylabel('Probability')
     plt.title('Histogram of Xiamen roads\' distance')
 
-    plt.ylim(0, 400)
+    plt.ylim(0, 200)
     plt.show()
 
 
